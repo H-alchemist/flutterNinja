@@ -4,28 +4,60 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Container Example'),
+          title: Text('Using Custom Widget Example'),
         ),
         body: Center(
-          child: Container(
-            padding :  EdgeInsets.symmetric(horizontal: 20.0  , vertical: 30.0),
-            width: 200,
-            height: 100,
-            color: Colors.blue,
-          
-            margin: EdgeInsets.all(16),
-            child: Text(
-              'Hello, Container!',
-              style: TextStyle(color: Colors.white),
-            ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              MyFrstApp(),
+              MyOtherApp(),
+            ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class MyFrstApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Text('First'),
+          Text('Second'),
+          Text('Third'),
+        ],
+      ),
+    );
+  }
+}
+
+class MyOtherApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text('First'),
+          Text('Second'),
+          Text('Third'),
+        ],
       ),
     );
   }
