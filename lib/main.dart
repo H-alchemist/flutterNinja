@@ -1,30 +1,71 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MaterialApp(
-      home: Home(),
-    ));
+void main() {
+  runApp(MyApp());
+}
 
-class Home extends StatelessWidget {
-  const Home({super.key});
-
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-          title: Text('my first app'),
-          centerTitle: true,
-          backgroundColor: Colors.red[600]),
-      body: Center(
-        child:Image(
-          image: AssetImage('c1.jpg'),
-          ) 
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          
-        },
-        backgroundColor: Colors.red[600],
-        child: Text('click'),
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Clickable Buttons Example'),
+        ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  // Handle button click
+                  print('Elevated Button Clicked');
+                },
+                child: Text('Elevated Button'),
+              ),
+              SizedBox(height: 20),
+              TextButton(
+                onPressed: () {
+                  // Handle button click
+                  print('Text Button Clicked');
+                },
+                child: Text('Text Button'),
+              ),
+              OutlinedButton(
+                onPressed: () {
+                  // Handle button click
+                  print('Outlined Button Clicked');
+                },
+                child: Text('Outlined Button'),
+              ),
+              IconButton(
+                onPressed: () {
+                  // Handle button click
+                  print('Icon Button Clicked');
+                },
+                icon: Icon(Icons.favorite),
+              ),
+              GestureDetector(
+                onTap: () {
+                  // Handle button click
+                  print('Custom Button Clicked');
+                },
+                child: Container(
+                  padding: EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Text(
+                    'Custom Button',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              )
+
+            ],
+          ),
+        ),
       ),
     );
   }
